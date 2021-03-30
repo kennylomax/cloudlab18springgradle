@@ -1,10 +1,10 @@
 pipeline {
   agent any
   stages {
-    stage('') {
+    stage('error') {
       agent {
         docker {
-          image 'gradle:latest'
+          image 'gradle:6.8.3-jdk11'
         }
 
       }
