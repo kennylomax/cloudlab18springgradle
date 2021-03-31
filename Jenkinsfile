@@ -10,6 +10,7 @@ pipeline {
       }
       steps {
         sh 'gradle assemble'
+        stash(name: 'assembled', includes: '**/*')
       }
     }
 
