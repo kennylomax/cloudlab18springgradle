@@ -11,7 +11,7 @@ pipeline {
       steps {
         sh '''gradle assemble
 
-ls -la'''
+ls -la build'''
         stash(name: 'assembled', includes: '**/build/**')
       }
     }
