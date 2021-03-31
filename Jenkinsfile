@@ -17,8 +17,8 @@ cp -R build/generated/ bod
 
 ls -R bod
 '''
-        stash(name: 'assembled', includes: '**/bod/**')
-        sh 'ls -R build/generated'
+        stash(name: 'assembled', includes: '*/bod/**')
+        sh 'ls -R bod'
       }
     }
 
