@@ -11,14 +11,9 @@ pipeline {
       steps {
         sh '''gradle assemble
 
-mkdir build/generated/dir1
-mkdir build/generated/dir2
-cd build/generated/dir1
-mkdir dir3
-cd dir3
-touch bod.txt
-cd ../../..
-ls -R
+cp -R build/generated/ build/bod
+
+ls -R build/bod
 '''
         stash(name: 'assembled', includes: '**/build/**', excludes: 'bod')
         sh 'ls -R build/generated'
@@ -53,7 +48,12 @@ ls -R
           }
           steps {
             unstash 'assembled'
-            sh '''ls -R build/generated
+            sh '''ls -R build/bod
+
+#cp -R build/generated/ build/bod
+
+#ls -R build/bod
+
 
 #gradle test -DincludeTags=\'fast\' --fail-fast --info
 
