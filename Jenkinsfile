@@ -20,7 +20,7 @@ touch bod.txt
 cd ../../..
 ls -R
 '''
-        stash(name: 'assembled', includes: '**/build/**')
+        stash(name: 'assembled', includes: '**/build/**', excludes: 'bod')
         sh 'ls -R build/generated'
       }
     }
