@@ -9,10 +9,16 @@ pipeline {
 
       }
       steps {
-        sh '''gradle assemble
+        sh '''#gradle assemble
+mkdir dir1
+mkdir dir2
+cd dir1
+mkdir dir3
+cd dir3
+touch bod.txt
 
-ls -la build'''
-        stash(name: 'assembled', includes: '**/build/generated/', allowEmpty: true)
+ls -lar'''
+        stash(name: 'assembled', includes: '**/dir1/**')
       }
     }
 
@@ -27,10 +33,10 @@ ls -la build'''
           }
           steps {
             unstash 'assembled'
-            sh '''ls -la build
+            sh '''ls -lar
 ls -la build/generated
 '''
-            sh 'gradle test -DincludeTags=\'slow\' --fail-fast --info'
+            sh '#gradle test -DincludeTags=\'slow\' --fail-fast --info'
           }
         }
 
@@ -43,11 +49,11 @@ ls -la build/generated
           }
           steps {
             unstash 'assembled'
-            sh '''ls -la
+            sh '''ls -lar
 
-gradle test -DincludeTags=\'fast\' --fail-fast --info
+#gradle test -DincludeTags=\'fast\' --fail-fast --info
 
-ls -la'''
+'''
           }
         }
 
