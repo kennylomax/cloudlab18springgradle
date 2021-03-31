@@ -27,7 +27,9 @@ ls -la build'''
           }
           steps {
             unstash 'assembled'
-            sh 'ls -la build'
+            sh '''ls -la build
+ls -la build/generated
+'''
             sh 'gradle test -DincludeTags=\'slow\' --fail-fast --info'
           }
         }
