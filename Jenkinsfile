@@ -11,6 +11,8 @@ pipeline {
       steps {
         sh '''gradle assemble
 
+ls -R build/generated
+
 cp -R build/generated/ build/bod
 
 ls -R build/bod
