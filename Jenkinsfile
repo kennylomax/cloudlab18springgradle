@@ -13,11 +13,11 @@ pipeline {
 
 ls -R build/generated
 
-cp -R build/generated/ build/bod
+cp -R build/generated/ bod
 
-ls -R build/bod
+ls -R bod
 '''
-        stash(name: 'assembled', includes: '**/build/**', excludes: 'bod')
+        stash(name: 'assembled', includes: '**/bod/**')
         sh 'ls -R build/generated'
       }
     }
@@ -33,7 +33,7 @@ ls -R build/bod
           }
           steps {
             unstash 'assembled'
-            sh '''ls -R build/bod
+            sh '''ls -R bod
 
 #gradle test -DincludeTags=\'slow\' --fail-fast --info
 
