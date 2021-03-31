@@ -11,9 +11,9 @@ pipeline {
       steps {
         sh '''gradle assemble
 
-mkdir build/dir1
-mkdir build/dir2
-cd build/dir1
+mkdir build/generated/dir1
+mkdir build/generated/dir2
+cd build/generated/dir1
 mkdir dir3
 cd dir3
 touch bod.txt
