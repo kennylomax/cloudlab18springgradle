@@ -33,7 +33,7 @@ ls -R build/bod
           }
           steps {
             unstash 'assembled'
-            sh '''ls -R build/generated
+            sh '''ls -R build/bod
 
 #gradle test -DincludeTags=\'slow\' --fail-fast --info
 
