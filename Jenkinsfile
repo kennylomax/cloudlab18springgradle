@@ -10,13 +10,14 @@ pipeline {
       }
       steps {
         sh '''gradle assemble
-mkdir dir1
-mkdir dir2
-cd dir1
+
+mkdir build/dir1
+mkdir build/dir2
+cd build/dir1
 mkdir dir3
 cd dir3
 touch bod.txt
-cd ../..
+cd ../../..
 ls -R
 '''
         stash(name: 'assembled', includes: '**/build/**')
