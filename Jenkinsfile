@@ -12,7 +12,7 @@ pipeline {
         sh '''gradle assemble
 
 ls -la'''
-        stash(name: 'assembled', includes: '**/*')
+        stash(name: 'assembled', includes: '**/build/**')
       }
     }
 
@@ -26,7 +26,7 @@ ls -la'''
 
           }
           steps {
-            sh 'ls -la'
+            sh 'ls -la build'
             unstash 'assembled'
             sh 'ls -la'
             sh 'gradle test -DincludeTags=\'slow\' --fail-fast --info'
