@@ -36,8 +36,9 @@ ls -R
           }
           steps {
             unstash 'assembled'
-            sh '''ls -R
-gradle test -DincludeTags=\'slow\' --fail-fast --info
+            sh '''ls -R build/generated
+
+#gradle test -DincludeTags=\'slow\' --fail-fast --info
 
 '''
           }
@@ -52,9 +53,9 @@ gradle test -DincludeTags=\'slow\' --fail-fast --info
           }
           steps {
             unstash 'assembled'
-            sh '''ls -R
+            sh '''ls -R build/generated
 
-gradle test -DincludeTags=\'fast\' --fail-fast --info
+#gradle test -DincludeTags=\'fast\' --fail-fast --info
 
 '''
           }
