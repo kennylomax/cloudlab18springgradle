@@ -12,7 +12,7 @@ pipeline {
         sh '''gradle assemble
 
 ls -la build'''
-        stash(name: 'assembled', includes: '**/build/**', allowEmpty: true)
+        stash(name: 'assembled', includes: '**/build/generated/', allowEmpty: true)
       }
     }
 
