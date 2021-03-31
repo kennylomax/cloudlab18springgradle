@@ -21,6 +21,7 @@ cd ../../..
 ls -R
 '''
         stash(name: 'assembled', includes: '**/build/**')
+        sh 'ls -R build/generated'
       }
     }
 
