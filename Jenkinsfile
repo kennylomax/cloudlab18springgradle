@@ -16,8 +16,9 @@ cd dir1
 mkdir dir3
 cd dir3
 touch bod.txt
-
-ls -lar'''
+cd ../..
+ls -R
+'''
         stash(name: 'assembled', includes: '**/dir1/**')
       }
     }
@@ -33,8 +34,8 @@ ls -lar'''
           }
           steps {
             unstash 'assembled'
-            sh '''ls -lar
-ls -la build/generated
+            sh '''ls -R
+
 '''
             sh '#gradle test -DincludeTags=\'slow\' --fail-fast --info'
           }
