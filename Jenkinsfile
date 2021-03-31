@@ -25,6 +25,7 @@ pipeline {
           }
           steps {
             sh 'gradle test -DincludeTags=\'slow\' --fail-fast --info'
+            unstash 'assembled'
           }
         }
 
@@ -37,6 +38,7 @@ pipeline {
           }
           steps {
             sh 'gradle test -DincludeTags=\'fast\' --fail-fast --info'
+            unstash 'assembled'
           }
         }
 
